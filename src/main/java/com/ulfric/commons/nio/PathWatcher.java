@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.function.Consumer;
 
 public final class PathWatcher implements AutoCloseable {
 
@@ -42,7 +41,7 @@ public final class PathWatcher implements AutoCloseable {
 		WATCHERS.values().forEach(PathWatcher::close);
 	}
 
-	private final List<Consumer<Path>> callbacks = new ArrayList<>();
+	private final List<Runnable> callbacks = new ArrayList<>();
 	private final Path path;
 	private Instant lastCallback;
 	private volatile boolean closed;
@@ -53,13 +52,19 @@ public final class PathWatcher implements AutoCloseable {
 		this.lastCallback = Instant.now();
 	}
 
+	public synchronized void closeIfInactive() {
+		if (callbacks.isEmpty()) {
+			close();
+		}
+	}
+
 	@Override
 	public synchronized void close() {
 		if (closed) {
 			throw new IllegalStateException("Already closed");
 		}
 
-		this.closed = true;
+		closed = true;
 		WATCHERS.remove(path, this);
 	}
 
@@ -68,7 +73,7 @@ public final class PathWatcher implements AutoCloseable {
 	}
 
 	private synchronized void routineUpdate() {
-		if (this.paused) {
+		if (paused) {
 			return;
 		}
 
@@ -76,32 +81,30 @@ public final class PathWatcher implements AutoCloseable {
 		Instant lastModified = FileHelper.getLastModified(path);
 		if (lastCallback.isBefore(lastModified)) {
 			this.lastCallback = lastModified;
-			this.update();
+			update();
 		}
 	}
 
 	public synchronized void update() {
-		this.callbacks.forEach(callback -> callback.accept(path));
+		callbacks.forEach(Runnable::run);
 	}
 
 	public synchronized void pause() {
-		this.paused = true;
+		paused = true;
 	}
 
 	public synchronized void resume() {
-		this.paused = false;
+		paused = false;
 	}
 
 	public synchronized void callback(Runnable callback) {
-		Objects.requireNonNull(callback);
-
-		callback(ignore -> callback.run());
-	}
-
-	public synchronized void callback(Consumer<Path> callback) {
 		Objects.requireNonNull(callback, "callback");
 
-		this.callbacks.add(callback);
+		callbacks.add(callback);
+	}
+
+	public synchronized void removeCallback(Runnable callback) {
+		callbacks.remove(callback);
 	}
 
 }
