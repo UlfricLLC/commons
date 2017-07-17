@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth;
 
-import com.ulfric.commons.test.EnumTestSuite;
+import com.ulfric.veracity.suite.EnumTestSuite;
 
 @RunWith(JUnitPlatform.class)
 class ThreadSleepResultTest extends EnumTestSuite {

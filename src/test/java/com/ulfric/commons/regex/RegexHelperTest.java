@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth;
 
-import com.ulfric.commons.test.HelperTestSuite;
+import com.ulfric.veracity.suite.HelperTestSuite;
 
 import java.util.regex.Pattern;
 

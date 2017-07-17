@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 
 import com.google.common.truth.Truth;
 
-import com.ulfric.commons.test.HelperTestSuite;
+import com.ulfric.veracity.suite.HelperTestSuite;
 
 @RunWith(JUnitPlatform.class)
 class ShutdownHookHelperTest extends HelperTestSuite {

@@ -9,8 +9,8 @@ import com.google.common.truth.Truth;
 import com.google.gson.JsonElement;
 
 import com.ulfric.commons.nio.FileHelper;
-import com.ulfric.commons.test.HelperTestSuite;
 import com.ulfric.commons.value.Bean;
+import com.ulfric.veracity.suite.HelperTestSuite;
 
 import java.io.Reader;
 import java.nio.file.Files;

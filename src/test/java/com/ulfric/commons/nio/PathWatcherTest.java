@@ -8,7 +8,7 @@ import org.mockito.Mockito;
 
 import com.google.common.truth.Truth;
 
-import com.ulfric.commons.test.PathWatcherTestSuite;
+import com.ulfric.commons.suite.PathWatcherTestSuite;
 import com.ulfric.veracity.Veracity;
 
 @RunWith(JUnitPlatform.class)

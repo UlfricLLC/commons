@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import com.google.common.truth.Truth;
 
 import com.ulfric.commons.concurrent.ThreadHelper;
-import com.ulfric.commons.test.PathWatcherTestSuite;
+import com.ulfric.commons.suite.PathWatcherTestSuite;
 import com.ulfric.commons.value.Bean;
 import com.ulfric.veracity.Veracity;
 

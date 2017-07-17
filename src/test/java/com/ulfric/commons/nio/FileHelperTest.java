@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 import com.google.common.jimfs.Jimfs;
 import com.google.common.truth.Truth;
 
-import com.ulfric.commons.test.HelperTestSuite;
 import com.ulfric.veracity.Veracity;
+import com.ulfric.veracity.suite.HelperTestSuite;
 
 import java.io.UncheckedIOException;
 import java.nio.file.FileSystem;

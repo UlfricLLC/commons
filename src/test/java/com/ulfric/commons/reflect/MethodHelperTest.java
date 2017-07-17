@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth8;
 
-import com.ulfric.commons.test.HelperTestSuite;
+import com.ulfric.veracity.suite.HelperTestSuite;
 
 @RunWith(JUnitPlatform.class)
 class MethodHelperTest extends HelperTestSuite {

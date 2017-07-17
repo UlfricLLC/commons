@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
-import com.ulfric.commons.test.HelperTestSuite;
 import com.ulfric.veracity.Veracity;
+import com.ulfric.veracity.suite.HelperTestSuite;
 
 import java.nio.file.Paths;
 

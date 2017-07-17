@@ -1,4 +1,4 @@
-package com.ulfric.commons.test;
+package com.ulfric.commons.suite;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,6 +7,7 @@ import com.ulfric.commons.concurrent.ThreadHelper;
 import com.ulfric.commons.nio.FileHelper;
 import com.ulfric.commons.nio.PathWatcher;
 import com.ulfric.commons.reflect.FieldHelper;
+import com.ulfric.veracity.suite.FileSystemTestSuite;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
