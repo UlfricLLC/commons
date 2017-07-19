@@ -65,6 +65,10 @@ public class JsonHelper {
 		return GSON.toJson(source);
 	}
 
+	public static JsonElement toJsonObject(Object source) {
+		return GSON.toJsonTree(source);
+	}
+
 	private JsonHelper() {
 	}
 

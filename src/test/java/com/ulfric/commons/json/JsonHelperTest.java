@@ -58,6 +58,13 @@ class JsonHelperTest extends HelperTestSuite {
 	}
 
 	@Test
+	void testToJsonObject() {
+		HelloBean hello = JsonHelper.read("{\"hello\":\"hello!\"}", HelloBean.class);
+		hello = JsonHelper.read(JsonHelper.toJsonObject(hello), HelloBean.class);
+		Truth.assertThat(hello.getHello()).isEqualTo("hello!");
+	}
+
+	@Test
 	void testOverride() {
 		HelloBean hello = new HelloBean();
 		hello.setHello("hola");
