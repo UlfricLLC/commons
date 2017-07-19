@@ -1,4 +1,4 @@
-package com.ulfric.commons.bean;
+package com.ulfric.commons.value;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
