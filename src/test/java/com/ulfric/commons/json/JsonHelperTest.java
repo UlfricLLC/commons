@@ -4,9 +4,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
+import org.apache.commons.lang3.reflect.TypeUtils;
+
 import com.google.common.jimfs.Jimfs;
 import com.google.common.truth.Truth;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import com.ulfric.commons.nio.FileHelper;
 import com.ulfric.commons.value.Bean;
@@ -15,6 +18,7 @@ import com.ulfric.veracity.suite.HelperTestSuite;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Map;
 
 @RunWith(JUnitPlatform.class)
 class JsonHelperTest extends HelperTestSuite {
@@ -43,6 +47,14 @@ class JsonHelperTest extends HelperTestSuite {
 		JsonElement helloJson = JsonHelper.read("{\"hello\":\"hello!\"}", JsonElement.class);
 		HelloBean hello = JsonHelper.read(helloJson, HelloBean.class);
 		Truth.assertThat(hello.getHello()).isEqualTo("hello!");
+	}
+
+	@Test
+	void testReadSpecialType() {
+		JsonObject mapJson = JsonHelper.read("{\"key\":\"value\"}", JsonObject.class);
+		Map<String, String> map = JsonHelper.read(mapJson,
+				TypeUtils.parameterize(Map.class, String.class, String.class), Map.class);
+		Truth.assertThat(map.get("key")).isEqualTo("value");
 	}
 
 	@Test

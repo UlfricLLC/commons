@@ -31,6 +31,10 @@ public class JsonHelper {
 		return getOrDefault(() -> GSON.fromJson(json, as), as);
 	}
 
+	public static <T> T read(JsonElement json, Type as, Class<T> defaultType) {
+		return getOrDefault(() -> GSON.fromJson(json, as), defaultType);
+	}
+
 	public static <T> T read(JsonElement json, Class<T> as) {
 		return getOrDefault(() -> GSON.fromJson(json, as), as);
 	}
