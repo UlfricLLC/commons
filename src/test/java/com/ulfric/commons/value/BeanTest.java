@@ -8,8 +8,6 @@ import org.junit.runner.RunWith;
 import com.google.common.truth.Truth;
 import com.google.gson.Gson;
 
-import com.ulfric.commons.value.Bean;
-
 @RunWith(JUnitPlatform.class)
 class BeanTest {
 
