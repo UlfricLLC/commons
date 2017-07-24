@@ -1,5 +1,6 @@
 package com.ulfric.commons.nio;
 
+import com.ulfric.commons.collection.MapHelper;
 import com.ulfric.commons.concurrent.ThreadHelper;
 
 import java.nio.file.Path;
@@ -8,14 +9,13 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public final class PathWatcher implements AutoCloseable {
 
 	private static final Thread THREAD = newTask();
 	private static final Duration ROUTINE_UPDATE_DELAY = Duration.ofSeconds(30);
-	private static final ConcurrentMap<Path, PathWatcher> WATCHERS = new ConcurrentHashMap<>();
+	private static final ConcurrentMap<Path, PathWatcher> WATCHERS = MapHelper.newConcurrentMap(1);
 
 	private static Thread newTask() {
 		return ThreadHelper.start(() -> {
