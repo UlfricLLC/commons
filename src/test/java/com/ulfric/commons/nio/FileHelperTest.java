@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import com.google.common.jimfs.Jimfs;
 import com.google.common.truth.Truth;
 
+import com.ulfric.commons.time.TemporalHelper;
 import com.ulfric.veracity.Veracity;
 import com.ulfric.veracity.suite.HelperTestSuite;
 
@@ -15,7 +16,6 @@ import java.io.UncheckedIOException;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.time.Instant;
 
 @RunWith(JUnitPlatform.class)
 class FileHelperTest extends HelperTestSuite {
@@ -145,7 +145,7 @@ class FileHelperTest extends HelperTestSuite {
 	void testLastModified() {
 		FileHelper.write(file, "anything");
 		long lastModified = FileHelper.getLastModified(file).toEpochMilli();
-		Truth.assertThat(Instant.now().toEpochMilli() - lastModified).isLessThan(10L);
+		Truth.assertThat(TemporalHelper.instantNow().toEpochMilli() - lastModified).isLessThan(10L);
 	}
 
 	private void assertExists() {

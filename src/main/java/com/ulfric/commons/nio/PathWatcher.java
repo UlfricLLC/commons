@@ -2,6 +2,7 @@ package com.ulfric.commons.nio;
 
 import com.ulfric.commons.collection.MapHelper;
 import com.ulfric.commons.concurrent.ThreadHelper;
+import com.ulfric.commons.time.TemporalHelper;
 
 import java.nio.file.Path;
 import java.time.Duration;
@@ -49,7 +50,7 @@ public final class PathWatcher implements AutoCloseable {
 
 	private PathWatcher(Path path) {
 		this.path = path;
-		this.lastCallback = Instant.now();
+		this.lastCallback = TemporalHelper.instantNow();
 	}
 
 	public synchronized void closeIfInactive() {
