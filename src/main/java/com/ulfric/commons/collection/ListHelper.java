@@ -3,6 +3,7 @@ package com.ulfric.commons.collection;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
+import java.util.function.Supplier;
 
 public class ListHelper {
 
@@ -21,14 +22,18 @@ public class ListHelper {
 		}
 	}
 
-	public static <E> void growToSize(List<E> list, int newSize, IntFunction<E> supplier) {
+	public static <E> void growToSize(List<E> list, int newSize, Supplier<E> supplier) {
+		growToSize(list, newSize, ignore -> supplier.get());
+	}
+
+	public static <E> void growToSize(List<E> list, int newSize, IntFunction<E> function) {
 		int currentSize = list.size();
 		if (newSize <= currentSize) {
 			return;
 		}
 
 		for (int x = currentSize; x < newSize; x++) {
-			list.add(supplier.apply(x));
+			list.add(function.apply(x));
 		}
 	}
 

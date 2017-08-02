@@ -22,6 +22,10 @@ public class TemporalHelper {
 		return Duration.between(instantNow(), end);
 	}
 
+	public static Duration betweenStartAndNow(Temporal start) {
+		return Duration.between(start, instantNow());
+	}
+
 	public static long millisFrom(TemporalAmount amount) {
 		return durationFrom(amount).toMillis();
 	}

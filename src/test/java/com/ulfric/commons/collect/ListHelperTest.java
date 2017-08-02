@@ -9,6 +9,7 @@ import com.google.common.truth.Truth;
 import com.ulfric.commons.collection.ListHelper;
 import com.ulfric.veracity.suite.HelperTestSuite;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -32,6 +33,13 @@ class ListHelperTest extends HelperTestSuite {
 		List<Integer> values = IntStream.rangeClosed(1, 5).boxed().collect(Collectors.toList());
 		ListHelper.cutToSize(values, 10);
 		Truth.assertThat(values).hasSize(5);
+	}
+
+	@Test
+	void testGrowToSizeSupplier() {
+		List<Object> values = new ArrayList<>();
+		ListHelper.growToSize(values, 3, Object::new);
+		Truth.assertThat(values).hasSize(3);
 	}
 
 	@Test

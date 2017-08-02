@@ -83,4 +83,10 @@ class TemporalHelperTest extends HelperTestSuite {
 		Veracity.assertThat(fiveMinutes).isEqualToWithinMarginOfError(Duration.ofMinutes(5));
 	}
 
+	@Test
+	void testBetween5MinsAgoAndNow() {
+		Duration fiveMinutes = TemporalHelper.betweenStartAndNow(Instant.now().minus(Duration.ofMinutes(5)));
+		Veracity.assertThat(fiveMinutes).isEqualToWithinMarginOfError(Duration.ofMinutes(5));
+	}
+
 }
