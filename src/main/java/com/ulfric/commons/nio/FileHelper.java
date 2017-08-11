@@ -1,5 +1,5 @@
 package com.ulfric.commons.nio;
-import com.ulfric.tryto.Try;
+import com.ulfric.tryto.TryTo;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,7 +15,7 @@ public class FileHelper {
 			return;
 		}
 
-		Try.toRunIo(() -> {
+		TryTo.runIo(() -> {
 			if (Files.isRegularFile(file)) {
 				Files.delete(file);
 				return;
@@ -48,7 +48,7 @@ public class FileHelper {
 		}
 
 		createParentDirectories(file);
-		Try.toRunIo(() -> Files.createFile(file));
+		TryTo.runIo(() -> Files.createFile(file));
 	}
 
 	public static void createParentDirectories(Path file) {
@@ -69,7 +69,7 @@ public class FileHelper {
 	public static void createDirectories(Path file) {
 		Objects.requireNonNull(file, "file");
 
-		Try.toRunIo(() -> Files.createDirectories(file));
+		TryTo.runIo(() -> Files.createDirectories(file));
 	}
 
 	public static void write(Path file, String value) {
@@ -82,17 +82,17 @@ public class FileHelper {
 		Objects.requireNonNull(file, "file");
 		Objects.requireNonNull(value, "value");
 
-		Try.toRunIo(() -> Files.write(file, value));
+		TryTo.runIo(() -> Files.write(file, value));
 	}
 
 	public static String read(Path file) {
 		Objects.requireNonNull(file, "file");
 
-		return new String(Try.toGetIo(() -> Files.readAllBytes(file)));
+		return new String(TryTo.getIo(() -> Files.readAllBytes(file)));
 	}
 
 	public static Instant getLastModified(Path file) {
-		return Try.toGetIo(() -> Files.getLastModifiedTime(file)).toInstant();
+		return TryTo.getIo(() -> Files.getLastModifiedTime(file)).toInstant();
 	}
 
 	private FileHelper() {

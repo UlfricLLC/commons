@@ -6,7 +6,7 @@ import com.google.gson.InstanceCreator;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-import com.ulfric.tryto.Try;
+import com.ulfric.tryto.TryTo;
 
 import java.io.Reader;
 import java.lang.reflect.Type;
@@ -19,7 +19,7 @@ public class JsonHelper {
 	private static final Gson GSON = new Gson();
 
 	public static <T> T read(Path json, Class<T> as) {
-		return Try.toApplyAutoclose(Try.toGetIo(() -> Files.newBufferedReader(json)),
+		return TryTo.applyAutoclose(TryTo.getIo(() -> Files.newBufferedReader(json)),
 				reader -> read(reader, as));
 	}
 

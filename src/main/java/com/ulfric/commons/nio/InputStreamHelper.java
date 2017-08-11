@@ -1,6 +1,6 @@
 package com.ulfric.commons.nio;
 
-import com.ulfric.tryto.Try;
+import com.ulfric.tryto.TryTo;
 
 import java.io.InputStream;
 import java.util.Objects;
@@ -11,8 +11,8 @@ public class InputStreamHelper {
 	public static String getAsString(InputStream stream) {
 		Objects.requireNonNull(stream, "stream");
 
-		return Try.toApplyAutoclose(stream, input ->
-			Try.toApplyAutoclose(new Scanner(input).useDelimiter("\\A"), Scanner::next)
+		return TryTo.applyAutoclose(stream, input ->
+			TryTo.applyAutoclose(new Scanner(input).useDelimiter("\\A"), Scanner::next)
 		);
 	}
 
