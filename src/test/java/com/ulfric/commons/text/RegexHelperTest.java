@@ -1,8 +1,6 @@
-package com.ulfric.commons.regex;
+package com.ulfric.commons.text;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth;
 
@@ -10,7 +8,6 @@ import com.ulfric.veracity.suite.HelperTestSuite;
 
 import java.util.regex.Pattern;
 
-@RunWith(JUnitPlatform.class)
 class RegexHelperTest extends HelperTestSuite {
 
 	RegexHelperTest() {
@@ -20,6 +17,11 @@ class RegexHelperTest extends HelperTestSuite {
 	@Test
 	void testMatches() {
 		Truth.assertThat(RegexHelper.matches("abc123", Pattern.compile("[a-z0-9]+"))).isTrue();
+	}
+
+	@Test
+	void testCompileMatches() {
+		Truth.assertThat("a").matches(RegexHelper.compile("[a-z]"));
 	}
 
 }

@@ -3,15 +3,12 @@ package com.ulfric.commons.runtime;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 import com.google.common.truth.Truth;
 
 import com.ulfric.veracity.suite.HelperTestSuite;
 
-@RunWith(JUnitPlatform.class)
 class ShutdownHookHelperTest extends HelperTestSuite {
 
 	ShutdownHookHelperTest() {

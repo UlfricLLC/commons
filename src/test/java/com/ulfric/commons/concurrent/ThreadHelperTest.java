@@ -1,8 +1,6 @@
 package com.ulfric.commons.concurrent;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth;
 
@@ -12,7 +10,6 @@ import com.ulfric.veracity.suite.HelperTestSuite;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-@RunWith(JUnitPlatform.class)
 class ThreadHelperTest extends HelperTestSuite {
 
 	ThreadHelperTest() {

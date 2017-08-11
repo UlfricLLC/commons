@@ -1,8 +1,6 @@
 package com.ulfric.commons.value;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth8;
 
@@ -11,7 +9,6 @@ import com.ulfric.veracity.suite.HelperTestSuite;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-@RunWith(JUnitPlatform.class)
 class OptionalHelperTest extends HelperTestSuite {
 
 	OptionalHelperTest() {

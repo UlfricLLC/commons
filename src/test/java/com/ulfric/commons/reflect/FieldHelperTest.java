@@ -1,8 +1,6 @@
 package com.ulfric.commons.reflect;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth8;
 
@@ -10,7 +8,6 @@ import com.ulfric.veracity.suite.HelperTestSuite;
 
 import java.lang.reflect.Field;
 
-@RunWith(JUnitPlatform.class)
 class FieldHelperTest extends HelperTestSuite {
 
 	FieldHelperTest() {

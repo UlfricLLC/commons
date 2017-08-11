@@ -2,8 +2,6 @@ package com.ulfric.commons.nio;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.google.common.jimfs.Jimfs;
 import com.google.common.truth.Truth;
@@ -17,7 +15,6 @@ import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-@RunWith(JUnitPlatform.class)
 class FileHelperTest extends HelperTestSuite {
 
 	FileHelperTest() {

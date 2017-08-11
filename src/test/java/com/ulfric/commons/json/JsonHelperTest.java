@@ -1,8 +1,6 @@
 package com.ulfric.commons.json;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import org.apache.commons.lang3.reflect.TypeUtils;
 
@@ -20,7 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 
-@RunWith(JUnitPlatform.class)
 class JsonHelperTest extends HelperTestSuite {
 
 	JsonHelperTest() {

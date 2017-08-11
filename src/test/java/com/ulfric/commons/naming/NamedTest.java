@@ -1,14 +1,11 @@
 package com.ulfric.commons.naming;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth;
 
 import com.ulfric.veracity.Veracity;
 
-@RunWith(JUnitPlatform.class)
 class NamedTest {
 
 	@Test

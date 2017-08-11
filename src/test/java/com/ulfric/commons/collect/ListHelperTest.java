@@ -1,8 +1,6 @@
 package com.ulfric.commons.collect;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.google.common.truth.Truth;
 
@@ -14,7 +12,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@RunWith(JUnitPlatform.class)
 class ListHelperTest extends HelperTestSuite {
 
 	ListHelperTest() {

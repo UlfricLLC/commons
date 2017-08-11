@@ -2,8 +2,6 @@ package com.ulfric.commons.nio;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 import com.google.common.truth.Truth;
@@ -11,7 +9,6 @@ import com.google.common.truth.Truth;
 import com.ulfric.commons.suite.PathWatcherTestSuite;
 import com.ulfric.veracity.Veracity;
 
-@RunWith(JUnitPlatform.class)
 class PathWatcherTest extends PathWatcherTestSuite {
 
 	private PathWatcher watcher;

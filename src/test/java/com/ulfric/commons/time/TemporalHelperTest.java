@@ -1,8 +1,6 @@
 package com.ulfric.commons.time;
 
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
 import com.google.common.truth.Truth;
@@ -17,7 +15,6 @@ import java.time.temporal.TemporalAmount;
 import java.time.temporal.UnsupportedTemporalTypeException;
 import java.util.Collections;
 
-@RunWith(JUnitPlatform.class)
 class TemporalHelperTest extends HelperTestSuite {
 
 	TemporalHelperTest() {
