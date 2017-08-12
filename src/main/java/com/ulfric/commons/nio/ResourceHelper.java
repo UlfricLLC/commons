@@ -1,5 +1,7 @@
 package com.ulfric.commons.nio;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.ulfric.commons.text.RegexHelper;
 
 import java.io.InputStream;
@@ -20,7 +22,7 @@ public class ResourceHelper {
 			return Collections.emptyList();
 		}
 
-		return Arrays.stream(NEW_LINE.split(text)).collect(Collectors.toList());
+		return Arrays.stream(NEW_LINE.split(text)).map(StringUtils::chomp).collect(Collectors.toList());
 	}
 
 	public static String getResourceText(String resource) {
