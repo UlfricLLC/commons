@@ -16,22 +16,10 @@ public class UniqueIdHelper {
 		}
 
 		if (uniqueId.length() >= 32) {
-			uniqueId = uniqueId.replace("-", "");
-			if (uniqueId.length() != 32) {
-				return null;
-			}
-
-			StringBuilder insertable = new StringBuilder(uniqueId.replace("-", ""));
-
-			insertable.insert(20, '-');
-			insertable.insert(16, '-');
-			insertable.insert(12, '-');
-			insertable.insert(8, '-');
-
-			return parseUniqueIdExact(insertable.toString());
+			return parseInferredUniqueId(uniqueId);
 		}
 
-		return exact;
+		return null;
 	}
 
 	public static UUID parseUniqueIdExact(String uniqueId) {
@@ -40,6 +28,26 @@ public class UniqueIdHelper {
 		} catch (IllegalArgumentException thatsOk) {
 			return null;
 		}
+	}
+
+	private static UUID parseInferredUniqueId(String uniqueId) {
+		uniqueId = uniqueId.trim().replace("-", "").replace("_", "");
+		if (uniqueId.length() != 32) {
+			return null;
+		}
+
+		return parseUniqueIdExact(uniqueIdWithDashes(uniqueId));
+	}
+
+	private static String uniqueIdWithDashes(String uniqueId) {
+		StringBuilder insertable = new StringBuilder(uniqueId.replace("-", ""));
+
+		insertable.insert(20, '-');
+		insertable.insert(16, '-');
+		insertable.insert(12, '-');
+		insertable.insert(8, '-');
+
+		return insertable.toString();
 	}
 
 	private UniqueIdHelper() {

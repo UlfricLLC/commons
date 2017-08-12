@@ -57,6 +57,13 @@ class UniqueIdHelperTest extends HelperTestSuite {
 	}
 
 	@Test
+	void testParseUniqueIdUnderscores() {
+		UUID uniqueId = UUID.randomUUID();
+		Truth.assertThat(UniqueIdHelper.parseUniqueId(uniqueId.toString().replace("-", "_")))
+			.isEqualTo(uniqueId);
+	}
+
+	@Test
 	void testParseUniqueIdFirstDashMissing() {
 		UUID uniqueId = UUID.randomUUID();
 		Truth.assertThat(UniqueIdHelper.parseUniqueId(uniqueId.toString().replaceFirst("-", "")))
