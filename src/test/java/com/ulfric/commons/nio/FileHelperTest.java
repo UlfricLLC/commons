@@ -106,7 +106,7 @@ class FileHelperTest extends HelperTestSuite {
 	void testCreateDefaultFile() {
 		Path file = fileSystem.getPath("test.txt");
 		FileHelper.createDefaultFile(file);
-		Truth.assertThat(FileHelper.read(file)).isEqualTo("test123");
+		Truth.assertThat(FileHelper.read(file)).isEqualTo("test123\n2ndLine");
 	}
 
 	@Test
