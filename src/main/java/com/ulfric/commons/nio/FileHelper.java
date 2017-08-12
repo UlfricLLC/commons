@@ -3,6 +3,7 @@ import com.ulfric.tryto.TryTo;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.FileTime;
 import java.time.Instant;
 import java.util.Objects;
 
@@ -93,6 +94,10 @@ public class FileHelper {
 
 	public static Instant getLastModified(Path file) {
 		return TryTo.getIo(() -> Files.getLastModifiedTime(file)).toInstant();
+	}
+
+	public static void setLastModified(Path file, Instant when) {
+		TryTo.runIo(() -> Files.setLastModifiedTime(file, FileTime.from(when)));
 	}
 
 	private FileHelper() {

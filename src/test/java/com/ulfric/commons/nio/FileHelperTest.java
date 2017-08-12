@@ -14,6 +14,8 @@ import java.io.UncheckedIOException;
 import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Duration;
+import java.time.Instant;
 
 class FileHelperTest extends HelperTestSuite {
 
@@ -140,9 +142,14 @@ class FileHelperTest extends HelperTestSuite {
 
 	@Test
 	void testLastModified() {
+		FileHelper.write(file, "blah");
+		FileHelper.setLastModified(file, TemporalHelper.instantNowMinus(Duration.ofMinutes(5)));
+		Instant oldLastModified = FileHelper.getLastModified(file);
+
 		FileHelper.write(file, "anything");
-		long lastModified = FileHelper.getLastModified(file).toEpochMilli();
-		Truth.assertThat(TemporalHelper.instantNow().toEpochMilli() - lastModified).isLessThan(10L);
+		Instant lastModified = FileHelper.getLastModified(file);
+
+		Truth.assertThat(oldLastModified).isLessThan(lastModified);
 	}
 
 	private void assertExists() {

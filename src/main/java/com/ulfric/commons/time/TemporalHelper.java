@@ -18,6 +18,10 @@ public class TemporalHelper {
 		return instantNow().plus(amount);
 	}
 
+	public static Instant instantNowMinus(TemporalAmount amount) {
+		return instantNow().minus(amount);
+	}
+
 	public static Duration betweenNowAnd(Temporal end) {
 		return Duration.between(instantNow(), end);
 	}
