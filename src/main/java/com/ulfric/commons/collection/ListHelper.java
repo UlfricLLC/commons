@@ -1,5 +1,6 @@
 package com.ulfric.commons.collection;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
@@ -35,6 +36,16 @@ public class ListHelper {
 		for (int x = currentSize; x < newSize; x++) {
 			list.add(function.apply(x));
 		}
+	}
+
+	public static <E> List<E> asList(Iterable<E> iterable) {
+		if (iterable instanceof List) {
+			return (List<E>) iterable;
+		}
+
+		List<E> list = new ArrayList<>();
+		iterable.forEach(list::add);
+		return list;
 	}
 
 	private ListHelper() {

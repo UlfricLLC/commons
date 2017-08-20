@@ -1,5 +1,6 @@
 package com.ulfric.commons.stream;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collector;
@@ -42,6 +43,10 @@ public class Collectors2 {
 					String.join(delimiter, list.subList(0, last)),
 					list.get(last));
 		};
+	}
+
+	public static <R> Collector<R, ?, List<R>> toUnmodifiableList() {
+		return Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList);
 	}
 
 	private Collectors2() {
