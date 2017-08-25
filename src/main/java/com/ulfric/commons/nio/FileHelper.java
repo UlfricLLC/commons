@@ -1,6 +1,7 @@
 package com.ulfric.commons.nio;
 import com.ulfric.tryto.TryTo;
 
+import java.io.BufferedReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.FileTime;
@@ -90,6 +91,12 @@ public class FileHelper {
 		Objects.requireNonNull(file, "file");
 
 		return new String(TryTo.getIo(() -> Files.readAllBytes(file)));
+	}
+
+	public static BufferedReader newBufferedReader(Path file) {
+		Objects.requireNonNull(file, "file");
+
+		return TryTo.getIo(() -> Files.newBufferedReader(file));
 	}
 
 	public static Instant getLastModified(Path file) {
