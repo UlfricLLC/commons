@@ -1,6 +1,7 @@
 package com.ulfric.commons.collection;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
@@ -38,9 +39,13 @@ public class ListHelper {
 		}
 	}
 
-	public static <E> List<E> asList(Iterable<E> iterable) {
+	public static <E> List<E> iterableAsList(Iterable<E> iterable) {
 		if (iterable instanceof List) {
 			return (List<E>) iterable;
+		}
+
+		if (iterable instanceof Collection) {
+			return new ArrayList<>((Collection<? extends E>) iterable);
 		}
 
 		List<E> list = new ArrayList<>();

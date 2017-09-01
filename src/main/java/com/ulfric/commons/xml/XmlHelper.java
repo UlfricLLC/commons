@@ -44,10 +44,9 @@ public class XmlHelper {
 
 			String substring = xml.substring(index, matcher.start());
 			if (escaped) {
-				string.append(escaper.escape(substring));
-			} else {
-				string.append(substring);
+				substring = escaper.escape(substring);
 			}
+			string.append(substring);
 			string.append('"');
 
 			index = matcher.end();
@@ -56,10 +55,9 @@ public class XmlHelper {
 
 		String substring = xml.substring(index, xml.length());
 		if (escaped) {
-			string.append(escaper.escape(substring));
-		} else {
-			string.append(substring);
+			substring = escaper.escape(substring);
 		}
+		string.append(substring);
 
 		return string.toString();
 	}

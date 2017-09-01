@@ -16,6 +16,7 @@ import com.ulfric.veracity.suite.HelperTestSuite;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.Map;
 
 class JsonHelperTest extends HelperTestSuite {
@@ -71,6 +72,12 @@ class JsonHelperTest extends HelperTestSuite {
 		HelloBean hello = JsonHelper.read("{\"hello\":\"hello!\"}", HelloBean.class);
 		hello = JsonHelper.read(JsonHelper.toJsonObject(hello), HelloBean.class);
 		Truth.assertThat(hello.getHello()).isEqualTo("hello!");
+	}
+
+	@Test
+	void testToJson() {
+		Map<String, Integer> jsonData = Collections.singletonMap("hello", 5);
+		Truth.assertThat(JsonHelper.toJson(jsonData)).isEqualTo("{\"hello\":5}");
 	}
 
 	@Test

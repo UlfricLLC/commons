@@ -2,6 +2,7 @@ package com.ulfric.commons.value;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import com.google.common.truth.Truth;
 import com.google.gson.Gson;
@@ -67,6 +68,13 @@ class BeanTest {
 		Truth.assertThat(second.hashCode()).isEqualTo(bean.hashCode());
 	}
 
+	@Test
+	void testIllegalToStringFallback() {
+		Naughty naughty = new Naughty();
+		naughty.data = Mockito.mock(DontSerializeMeBro.class);
+		Truth.assertThat(naughty.toString()).isEqualTo("{\"data\":\"{0}\"}".replace("{0}", naughty.data.toString()));
+	}
+
 	private void populateDefaults(SimpleBean bean) {
 		bean.setBool(true);
 		bean.setInteger(5);
@@ -101,6 +109,21 @@ class BeanTest {
 		public void setBool(Boolean bool) {
 			this.bool = bool;
 		}
+	}
+
+	static class Naughty extends Bean {
+		private DontSerializeMeBro data;
+
+		public DontSerializeMeBro getData() {
+			return data;
+		}
+
+		public void setData(DontSerializeMeBro data) {
+			this.data = data;
+		}
+	}
+
+	interface DontSerializeMeBro {
 	}
 
 }

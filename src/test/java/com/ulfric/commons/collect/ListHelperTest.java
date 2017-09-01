@@ -8,7 +8,10 @@ import com.ulfric.commons.collection.ListHelper;
 import com.ulfric.veracity.suite.HelperTestSuite;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -51,6 +54,25 @@ class ListHelperTest extends HelperTestSuite {
 		List<Integer> values = IntStream.rangeClosed(1, 5).boxed().collect(Collectors.toList());
 		ListHelper.growToSize(values, 1, value -> value);
 		Truth.assertThat(values).hasSize(5);
+	}
+
+	@Test
+	void testIterableAsListOnList() {
+		List<String> list = Arrays.asList("1", "2", "3");
+		Truth.assertThat(ListHelper.iterableAsList(list)).isSameAs(list);
+	}
+
+	@Test
+	void testIterableAsListOnCollection() {
+		Set<String> set = new HashSet<>(Arrays.asList("1", "2", "3"));
+		Truth.assertThat(ListHelper.iterableAsList(set)).containsExactlyElementsIn(set);
+	}
+
+	@Test
+	void testIterableAsListOnIterable() {
+		Set<String> list = new HashSet<>(Arrays.asList("1", "2", "3"));
+		Iterable<String> iterable = list::iterator;
+		Truth.assertThat(ListHelper.iterableAsList(iterable)).containsExactlyElementsIn(list);
 	}
 
 }
