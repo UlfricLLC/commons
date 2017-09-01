@@ -1,6 +1,7 @@
 package com.ulfric.commons.reflect;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Optional;
 
 public class MethodHelper {
@@ -11,6 +12,14 @@ public class MethodHelper {
 		} catch (NoSuchMethodException | SecurityException ignore) {
 			return Optional.empty();
 		}
+	}
+
+	public static boolean returnsVoid(Method method) {
+		return TypeHelper.isVoid(method.getReturnType());
+	}
+
+	public static boolean isStatic(Method method) {
+		return Modifier.isStatic(method.getModifiers());
 	}
 
 	private MethodHelper() {

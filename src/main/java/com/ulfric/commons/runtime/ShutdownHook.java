@@ -19,7 +19,7 @@ public final class ShutdownHook {
 		}
 
 		this.registered = true;
-		Runtime.getRuntime().addShutdownHook(this.shutdownHook);
+		RuntimeHelper.addShutdownHook(this.shutdownHook);
 	}
 
 	public synchronized void unregister() {
@@ -27,7 +27,7 @@ public final class ShutdownHook {
 			return;
 		}
 
-		Runtime.getRuntime().removeShutdownHook(this.shutdownHook);
+		RuntimeHelper.removeShutdownHook(this.shutdownHook);
 		this.registered = false;
 	}
 

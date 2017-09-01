@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import com.google.common.truth.Truth;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 class BeanTest {
 
@@ -18,32 +19,32 @@ class BeanTest {
 
 	@Test
 	void testToEmptyJson() {
-		String emptyJson = bean.toJson();
-		Truth.assertThat(emptyJson).isEqualTo(gson.toJson(bean));
+		JsonElement emptyJson = bean.toJson();
+		Truth.assertThat(emptyJson).isEqualTo(gson.toJsonTree(bean));
 	}
 
 	@Test
 	void testToPopulatedJson() {
 		populateDefaults(bean);
 
-		String populatedJson = bean.toJson();
-		Truth.assertThat(populatedJson).isEqualTo(gson.toJson(bean));
+		JsonElement populatedJson = bean.toJson();
+		Truth.assertThat(populatedJson).isEqualTo(gson.toJsonTree(bean));
 	}
 
 	@Test
 	void testToPopulatedJsonIsDifferentThanEmptyJson() {
-		String emptyJson = bean.toJson();
+		JsonElement emptyJson = bean.toJson();
 
 		populateDefaults(bean);
 
-		String populatedJson = bean.toJson();
+		JsonElement populatedJson = bean.toJson();
 		Truth.assertThat(populatedJson).isNotEqualTo(emptyJson);
 	}
 
 	@Test
 	void testToJsonRoundtrip() {
 		populateDefaults(bean);
-		String json = bean.toJson();
+		JsonElement json = bean.toJson();
 
 		SimpleBean roundtrip = gson.fromJson(json, SimpleBean.class);
 		Truth.assertThat(roundtrip).isNotSameAs(bean);
@@ -54,7 +55,7 @@ class BeanTest {
 	void testToStringEqualsToJson() {
 		populateDefaults(bean);
 
-		Truth.assertThat(bean.toString()).isEqualTo(bean.toJson());
+		Truth.assertThat(bean.toString()).isEqualTo(bean.toJson().toString());
 	}
 
 	@Test

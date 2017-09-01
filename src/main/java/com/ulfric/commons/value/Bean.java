@@ -2,6 +2,10 @@ package com.ulfric.commons.value;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import com.google.gson.JsonElement;
 
 import com.ulfric.commons.json.JsonHelper;
 
@@ -19,11 +23,15 @@ public class Bean {
 
 	@Override
 	public String toString() {
-		return toJson();
+		try {
+			return toJson().toString();
+		} catch (UnsupportedOperationException thatsOk) {
+			return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+		}
 	}
 
-	public final String toJson() {
-		return JsonHelper.toJson(this);
+	public final JsonElement toJson() {
+		return JsonHelper.toJsonObject(this);
 	}
 
 }

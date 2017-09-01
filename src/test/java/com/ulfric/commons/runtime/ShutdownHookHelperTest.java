@@ -31,20 +31,17 @@ class ShutdownHookHelperTest extends HelperTestSuite {
 
 	@Test
 	void testRegisterRunnable() {
-		ShutdownHook hook = ShutdownHookHelper.registerShutdownHook(() -> {});
 		Truth.assertThat(hook.isRegistered()).isTrue();
 	}
 
 	@Test
 	void testUnregisterRunnable() {
-		ShutdownHook hook = ShutdownHookHelper.registerShutdownHook(() -> {});
 		hook.unregister();
 		Truth.assertThat(hook.isRegistered()).isFalse();
 	}
 
 	@Test
 	void testReregisterRunnable() {
-		ShutdownHook hook = ShutdownHookHelper.registerShutdownHook(() -> {});
 		hook.unregister();
 		hook.register();
 		Truth.assertThat(hook.isRegistered()).isTrue();
@@ -52,14 +49,12 @@ class ShutdownHookHelperTest extends HelperTestSuite {
 
 	@Test
 	void testDoubleReregisterRunnable() {
-		ShutdownHook hook = ShutdownHookHelper.registerShutdownHook(() -> {});
 		hook.register();
 		Truth.assertThat(hook.isRegistered()).isTrue();
 	}
 
 	@Test
 	void testDoubleUnregisterRunnable() {
-		ShutdownHook hook = ShutdownHookHelper.registerShutdownHook(() -> {});
 		hook.unregister();
 		hook.unregister();
 		Truth.assertThat(hook.isRegistered()).isFalse();
