@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import com.google.common.truth.Truth;
 
+import com.ulfric.commons.collection.Collectors2;
 import com.ulfric.veracity.Veracity;
 import com.ulfric.veracity.suite.HelperTestSuite;
 

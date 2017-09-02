@@ -1,4 +1,4 @@
-package com.ulfric.commons.stream;
+package com.ulfric.commons.collection;
 
 import java.util.Collections;
 import java.util.List;
