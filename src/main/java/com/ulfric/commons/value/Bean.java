@@ -8,8 +8,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.google.gson.JsonElement;
 
 import com.ulfric.commons.json.JsonHelper;
+import com.ulfric.commons.json.Jsonable;
 
-public class Bean {
+public class Bean implements Jsonable {
 
 	@Override
 	public boolean equals(Object that) {
@@ -30,6 +31,7 @@ public class Bean {
 		}
 	}
 
+	@Override
 	public final JsonElement toJson() {
 		return JsonHelper.toJsonObject(this);
 	}
