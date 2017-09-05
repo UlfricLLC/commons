@@ -6,6 +6,10 @@ public class TypeHelper {
 		return type == Void.class || type == void.class;
 	}
 
+	public static boolean isInterface(Class<?> type) {
+		return type != null && type.isInterface();
+	}
+
 	private TypeHelper() {
 	}
 
