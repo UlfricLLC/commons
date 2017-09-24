@@ -3,6 +3,7 @@ package com.ulfric.commons.nio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
 import com.google.common.truth.Truth;
 
@@ -28,7 +29,7 @@ class FileHelperTest extends HelperTestSuite {
 
 	@BeforeEach
 	void setup() {
-		fileSystem = Jimfs.newFileSystem();
+		fileSystem = Jimfs.newFileSystem(Configuration.unix());
 		file = fileSystem.getPath("test");
 	}
 
