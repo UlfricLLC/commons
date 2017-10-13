@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 @Retention(RUNTIME)
 @Target(TYPE)
-public @interface Name {
+public @interface Name { // TODO replace with Dragoon
 
 	String value();
 
