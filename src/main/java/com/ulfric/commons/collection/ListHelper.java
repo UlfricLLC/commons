@@ -2,6 +2,7 @@ package com.ulfric.commons.collection;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
@@ -51,6 +52,10 @@ public class ListHelper {
 		List<E> list = new ArrayList<>();
 		iterable.forEach(list::add);
 		return list;
+	}
+
+	public static <E> List<E> unmodifiableCopy(List<E> list) {
+		return Collections.unmodifiableList(new ArrayList<>(list));
 	}
 
 	private ListHelper() {
