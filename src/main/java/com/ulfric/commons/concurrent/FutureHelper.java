@@ -11,11 +11,8 @@ import java.util.stream.Collectors;
 
 public class FutureHelper {
 
-	private static final CompletableFuture<?> EMPTY = CompletableFuture.completedFuture(null);
-
-	@SuppressWarnings("unchecked")
-	public static <T> CompletableFuture<T> emptyCompletableFuture() {
-		return (CompletableFuture<T>) EMPTY;
+	public static <T> CompletableFuture<T> empty() {
+		return CompletableFuture.completedFuture(null);
 	}
 
 	@SafeVarargs
