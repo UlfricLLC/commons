@@ -15,6 +15,10 @@ public class FutureHelper {
 		return CompletableFuture.completedFuture(null);
 	}
 
+	public static <T> CompletableFuture<T> exceptionally(RuntimeException throwable) {
+		return CompletableFuture.supplyAsync(() -> { throw throwable; }, Runnable::run);
+	}
+
 	@SafeVarargs
 	public static <T> CompletableFuture<List<T>> allOf(CompletableFuture<T>... futures) {
 		return CompletableFuture.allOf(futures)

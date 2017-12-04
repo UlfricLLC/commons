@@ -2,6 +2,7 @@ package com.ulfric.commons.collection;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -47,6 +48,10 @@ public class Collectors2 {
 
 	public static <R> Collector<R, ?, List<R>> toUnmodifiableList() {
 		return Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList);
+	}
+
+	public static <R> Collector<R, ?, Set<R>> toUnmodifiableSet() {
+		return Collectors.collectingAndThen(Collectors.toSet(), Collections::unmodifiableSet);
 	}
 
 	private Collectors2() {
