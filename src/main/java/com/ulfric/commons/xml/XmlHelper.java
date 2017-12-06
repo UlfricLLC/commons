@@ -1,5 +1,15 @@
 package com.ulfric.commons.xml;
 
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -8,18 +18,7 @@ import org.xml.sax.InputSource;
 
 import com.google.common.escape.Escaper;
 import com.google.common.xml.XmlEscapers;
-
 import com.ulfric.tryto.TryTo;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class XmlHelper {
 
@@ -116,6 +115,15 @@ public class XmlHelper {
 		}
 
 		return null;
+	}
+
+	public static boolean hasSiblings(Node node) {
+		Node parent = node.getParentNode();
+		if (parent == null) {
+			return false;
+		}
+
+		return parent.getChildNodes().getLength() > 1;
 	}
 
 	private XmlHelper() {
