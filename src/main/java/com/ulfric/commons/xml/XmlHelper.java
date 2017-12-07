@@ -95,6 +95,10 @@ public class XmlHelper {
 	}
 
 	public static String getNodeValue(Node node) {
+		if (node == null) {
+			return null;
+		}
+
 		String value = node.getNodeValue();
 		if (value != null) {
 			return value;
