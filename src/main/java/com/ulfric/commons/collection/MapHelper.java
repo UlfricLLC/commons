@@ -16,6 +16,10 @@ public class MapHelper {
 		return Collections.unmodifiableMap(new HashMap<>(map));
 	}
 
+	public static int size(Map<?, ?> map) {
+		return map == null ? 0 : map.size();
+	}
+
 	private MapHelper() {
 	}
 
