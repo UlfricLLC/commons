@@ -3,6 +3,7 @@ package com.ulfric.commons.time;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAmount;
 
@@ -40,6 +41,14 @@ public class TemporalHelper {
 		}
 
 		return Duration.from(amount);
+	}
+
+	public static ZoneId newYorkOrDefault() {
+		try {
+			return ZoneId.of("America/New_York");
+		} catch (Exception thatsOk) {
+			return ZoneId.systemDefault();
+		}
 	}
 
 	private TemporalHelper() {
