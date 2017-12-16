@@ -1,8 +1,9 @@
 package com.ulfric.commons.math;
 
-import org.apache.commons.lang3.math.NumberUtils;
-
+import java.math.BigDecimal;
 import java.util.OptionalInt;
+
+import org.apache.commons.lang3.math.NumberUtils;
 
 public class NumberHelper {
 
@@ -17,6 +18,10 @@ public class NumberHelper {
 		} catch (NumberFormatException notNumber) {
 			return OptionalInt.empty();
 		}
+	}
+
+	public static boolean isNegative(BigDecimal number) {
+		return number.compareTo(BigDecimal.ZERO) < 0;
 	}
 
 	private NumberHelper() {
