@@ -7,7 +7,9 @@ public class FieldHelper {
 
 	public static Optional<Field> getDeclaredField(Class<?> type, String name) {
 		try {
-			return Optional.of(type.getDeclaredField(name));
+			Field field = type.getDeclaredField(name);
+			field.setAccessible(true);
+			return Optional.of(field);
 		} catch (NoSuchFieldException | SecurityException ignore) {
 			return Optional.empty();
 		}
